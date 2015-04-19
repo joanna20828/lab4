@@ -66,7 +66,14 @@ void GiveQuestion()
 			}else Dig=Dig+1;
 		}			
 	}
-
+	for(i=0;i<12;i++)
+	{
+		for(j=0;j<12;j++)
+		{
+			cout << map2[i][j] << ' ' ;
+		}
+	cout << '\n' ;
+	}
 }
 
 
@@ -133,8 +140,9 @@ void Solve()
 		{
 			for(j=0;j<12;j++)
 			{
-				cout << re.map[i][j];
+			cout << re.map[i][j] << ' ';
 			}
+		cout << '\n' ;
 		}
 	}
 	else
