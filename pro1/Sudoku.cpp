@@ -3,12 +3,71 @@
 #include <ctime>
 #include <cstdlib>
 #include <vector>
+#include <Sudoku.h>
 
 void GiveQuestion()
 {
+	int map1[12][12],map2[12][12];
 	vector <int > board;
 	
-	int DigSudoku();
+//複製棋盤
+	for(i=0;i<12;i++)
+	{
+		for(j=0;j<12;j++)
+		{
+			map1[i][j]=new_board[i][j];
+		}
+	}
+//改數字
+	srand(time(NULL));
+	x=rand()%9;
+	for(i=0;i<12;i++)
+	{
+		for(j=0;j<12;j++)
+		{
+			if(map[i][j]!=-1)
+			{
+				map2[i][j]=map1[i][j]+x;
+				if(map2[i][j]>9)
+					map2[i][j]=map2[i][j]-9;
+			}
+		}
+	}
+/*挖洞
+	for(i=0;i<12;i++)
+	{
+		for(j=0;j<12;j++)
+		{
+			if(map2[i][j]!=-1)
+			{
+				t=map2[i][j];
+				map2[i][j]=0;
+				Ans=SudokuSolve();
+				if(Ans!=1)
+					map2[i][j]=t;
+			}
+		}	
+	} */
+	
+//挖洞2
+	bool mapb[i][j];
+	while(Dig<15)
+	{
+		srand(time(NULL));
+		i=rand()%11;
+		j=rand()%11;
+		if(mapb[i][j])
+		{
+			t=map2[i][j];
+			map2[i][j]=0;
+			if(SudokuSolve()!=1)
+			{	
+				map2[i][j]=t;
+				mapb[i][j]=false;
+			}else Dig=Dig+1;
+		}			
+	}
+
 
 	PrintBoard(board);	
 }
@@ -26,33 +85,3 @@ void PrintBoard(vector <int > board)
     cout << endl;
 }
 
-int DigSudoku()
-{
-	int d, ka, kb, kc; 
-	int Dig[Mid];   // 挖洞順序
-   
-	for(d=0; d<Mid; d++) Dig[d]=d;
-	for(d=0; d<Mid; d++)  // 打亂挖洞順序
-	{
-		int n = rand()%Mid;
-		int t = Dig[n];  Dig[n]=Dig[d]; Dig[d] = t;  //交換     
-	}    
-	for(d=0; d<Mid; d++)
-	{
-		Ans=0; kb = -1; kc = Max-Dig[d]-1;
-		ka = Board[Dig[d]];  Board[Dig[d]]=0;  // 挖洞
-		if (kc!=Dig[d])   // 對稱 
-			{
-				kb = Board[kc];  
-				Board[kc] = 0;
-			}
-		SolveSudoku(Board);
-		if (Ans>1)  // 有多重解, 挖洞需填回
-		{
-			Board[Dig[d]] = ka;
-			if (kb>0) Board[kc] = kb;
-      	}
-   }
-   }
-   return 0;
-}
