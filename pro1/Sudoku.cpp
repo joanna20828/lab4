@@ -8,6 +8,7 @@ void GiveQuestion()
 {
 	int map1[12][12],map2[12][12];
 	int i,j,x,t;	
+	int Dig=1;
 //複製棋盤
 	for(i=0;i<12;i++)
 	{
@@ -69,16 +70,20 @@ void GiveQuestion()
 }
 
 
-int SudokuSolve()
+int SudokuSolve(int * map)
 {
+	struct{
+		int map[i][j];
+		int ans;
+	}re;
 
+	
+	return re;
 
 }
 int * ReadIn()
 {
-	struct{
-	int map[12][12];
-	}a;
+	int * map[12][12];
 	int a;
 	while(cin >> a)
 	{
@@ -86,23 +91,35 @@ int * ReadIn()
 		{
 			for(j=0;j<12;j++)
 			{
-				a.map[i][j]=a;
+				map[i][j]=a;
 			}
 		}
 	}
-	return a;
+	return map;
 }
 void Solve()
 {
 	int * map;
+	struct{
+		int map[12][12];
+		int ans;
+	}re;
 
 	map=ReadIn();
 
-	if(SudokuSolve()==0)
+	re=SudokuSolve(map);
+		
+	if(re.ans==0)
 		cout << 0 <<endl;
-	else if (SudokuSolve()==1)
-	{	/////output
-	
+	else if (re.ans==1)
+	{	
+		for(i=0;i<12;i++)
+		{
+			for(j=0;j<12;j++)
+			{
+				cout << re.map[i][j];
+			}
+		}
 	}
 	else
 		cout > 2 >endl;
