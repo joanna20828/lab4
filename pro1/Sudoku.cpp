@@ -76,7 +76,23 @@ int SudokuSolve(int * map)
 		int map[i][j];
 		int ans;
 	}re;
-
+	for(i=0;i<12;i++)
+	{
+		for(j=0;j<12;j++)
+		{
+			if(map[i][j]==0)
+			{
+				map[i][j]=1;
+				for(k=0;k<12;k++)
+				{
+					if(map[i][j]==map[i][k])
+					{
+						
+					}
+				}	
+			}
+		}
+	}	
 	
 	return re;
 

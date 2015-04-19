@@ -7,9 +7,10 @@ using namespace std;
 class Sudoku{
 	public:
 		Sudoku();
-		vector<int > get_board();
 		void GiveQuestion();
-		void PrintBoard(vector <int > board);
+		void Solve();
+		int * ReadIn();
+		int SudokuSolve();
 			
 	private:
 		int new_board[SIZE][SIZE]={{4,2,6,8,7,3,9,5,1,-1,-1,-1},
@@ -23,5 +24,5 @@ class Sudoku{
 					   {6,9,5,3,1,7,-1,-1,-1,2,8,4},
 					   {3,1,2,-1,-1,-1,7,4,8,5,6,9},
 					   {7,4,8,-1,-1,-1,5,6,9,3,1,2},
-					   {5,6,9,-1,-1,-1,3,1,2,7,4,8}};;
+					   {5,6,9,-1,-1,-1,3,1,2,7,4,8}};
 }
