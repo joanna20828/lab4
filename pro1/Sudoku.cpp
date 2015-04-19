@@ -83,6 +83,7 @@ int SudokuSolve(int * map)
 		int map[i][j];
 		int ans;
 	}re;
+//行
 	for(i=0;i<12;i++)
 	{
 		for(j=0;j<12;j++)
@@ -90,16 +91,37 @@ int SudokuSolve(int * map)
 			if(map[i][j]==0)
 			{
 				map[i][j]=1;
+				s=map[i][j];
 				for(k=0;k<12;k++)
 				{
-					if(map[i][j]==map[i][k])
+					if(s==map[i][k])
 					{
-						
+						map[i][j]=map[i][j]+1;	
 					}
 				}	
 			}
 		}
 	}	
+//列
+	for(j=0;j<12;j++) //列
+	{
+		for(i=0;i<12;i++)
+		{
+			if(map[i][j]==0)
+			{
+				map[i][j]=1;
+                                s=map[i][j];
+				for(k=0;k<12;k++)
+				{
+					if(s==map[k][j])
+					{
+						map[i][j]=map[i][j]+1;
+					}
+				}	
+			}
+		}
+	}
+
 	
 	return re;
 
