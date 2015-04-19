@@ -4,15 +4,19 @@
 #include <vector>
 #include <Sudoku.h>
 
+using namespace std;
+
 void GiveQuestion()
 {
+
+	int i,j,x,t;
+	int map1[12][12],map2[12][12],new_board[i][j];
+	int Dig=1;
+	int map[12][12];
 	struct{
 		int map[i][j];
 		int ans;
 	}re;
-	int map1[12][12],map2[12][12];
-	int i,j,x,t;	
-	int Dig=1;
 //複製棋盤
 	for(i=0;i<12;i++)
 	{
@@ -71,25 +75,17 @@ void GiveQuestion()
 			}else Dig=Dig+1;
 		}			
 	}
-	for(i=0;i<12;i++)
-	{
-		for(j=0;j<12;j++)
-		{
-			cout << map2[i][j] << ' ' ;
-		}
-	cout << '\n' ;
-	}
 }
 
-
-int SudokuSolve(int * map)
+int SudokuSolve(int * map) //解數獨
 {
+	int i,j,k,s;
 	struct{
 		int map[i][j];
 		int ans;
 	}re;
-//行
-	for(i=0;i<12;i++)
+	re.map=map;
+	for(i=0;i<12;i++) //行
 	{
 		for(j=0;j<12;j++)
 		{
@@ -101,13 +97,13 @@ int SudokuSolve(int * map)
 				{
 					if(s==map[i][k])
 					{
-						map[i][j]=map[i][j]+1;	
+						map[i][j]=map[i][j]+1;
 					}
 				}	
 			}
 		}
-	}	
-//列
+	}
+	
 	for(j=0;j<12;j++) //列
 	{
 		for(i=0;i<12;i++)
@@ -115,10 +111,9 @@ int SudokuSolve(int * map)
 			if(map[i][j]==0)
 			{
 				map[i][j]=1;
-                                s=map[i][j];
 				for(k=0;k<12;k++)
 				{
-					if(s==map[k][j])
+					if(map[i][j]==map[k][j])
 					{
 						map[i][j]=map[i][j]+1;
 					}
@@ -126,13 +121,12 @@ int SudokuSolve(int * map)
 			}
 		}
 	}
-
 	
 	return re;
-
 }
-int * ReadIn()
+int * ReadIn() //讀入題目
 {
+	int i,j;
 	int * map[12][12];
 	int a;
 	while(cin >> a)
@@ -147,16 +141,16 @@ int * ReadIn()
 	}
 	return map;
 }
-void Solve()
+void Solve() //解數獨並輸出
 {
+	int i,j;
 	int * map;
 	struct{
 		int map[12][12];
 		int ans;
 	}re;
-
 	map=ReadIn();
-
+	
 	re=SudokuSolve(map);
 		
 	if(re.ans==0)
@@ -167,11 +161,11 @@ void Solve()
 		{
 			for(j=0;j<12;j++)
 			{
-			cout << re.map[i][j] << ' ';
+				cout << re.map[i][j];
 			}
-		cout << '\n' ;
 		}
 	}
 	else
-		cout > 2 >endl;
+		cout << '2' <<endl;
+
 }

@@ -2,6 +2,7 @@
 #include<iostream>
 #include<vector>
 
+
 using namespace std;
 
 class Sudoku{
@@ -11,9 +12,8 @@ class Sudoku{
 		void Solve();
 		int * ReadIn();
 		int SudokuSolve();
-			
 	private:
-		int new_board[SIZE][SIZE]={{4,2,6,8,7,3,9,5,1,-1,-1,-1},
+		static int new_board[SIZE][SIZE]={{4,2,6,8,7,3,9,5,1,-1,-1,-1},
 					   {8,7,3,9,5,1,6,2,4,-1,-1,-1},
 					   {9,5,1,6,2,4,8,7,3,-1,-1,-1},
 					   {-1,-1,-1,1,3,2,4,8,7,9,5,6},
@@ -25,4 +25,5 @@ class Sudoku{
 					   {3,1,2,-1,-1,-1,7,4,8,5,6,9},
 					   {7,4,8,-1,-1,-1,5,6,9,3,1,2},
 					   {5,6,9,-1,-1,-1,3,1,2,7,4,8}};
-}
+	
+};
