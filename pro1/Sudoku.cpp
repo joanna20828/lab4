@@ -6,6 +6,10 @@
 
 void GiveQuestion()
 {
+	struct{
+		int map[i][j];
+		int ans;
+	}re;
 	int map1[12][12],map2[12][12];
 	int i,j,x,t;	
 	int Dig=1;
@@ -41,8 +45,8 @@ void GiveQuestion()
 			{
 				t=map2[i][j];
 				map2[i][j]=0;
-				Ans=SudokuSolve();
-				if(Ans!=1)
+				re=SudokuSolve();
+				if(re.ans!=1)
 					map2[i][j]=t;
 			}
 		}	
@@ -59,7 +63,8 @@ void GiveQuestion()
 		{
 			t=map2[i][j];
 			map2[i][j]=0;
-			if(SudokuSolve()!=1)
+			re=SudokuSolve();
+			if(re.ans!=1)
 			{	
 				map2[i][j]=t;
 				mapb[i][j]=false;
