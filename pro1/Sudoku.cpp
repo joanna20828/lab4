@@ -1,4 +1,3 @@
-#include "SudokuGen.h"
 #include<iostream>
 #include <ctime>
 #include <cstdlib>
@@ -8,8 +7,7 @@
 void GiveQuestion()
 {
 	int map1[12][12],map2[12][12];
-	vector <int > board;
-	
+	int i,j,x,t;	
 //複製棋盤
 	for(i=0;i<12;i++)
 	{
@@ -68,20 +66,44 @@ void GiveQuestion()
 		}			
 	}
 
-
-	PrintBoard(board);	
 }
 
-void PrintBoard(vector <int > board)
+
+int SudokuSolve()
 {
-	for (int i=0;i<board.size();i++)
-    	{
-        	cout << board[i] << ' ';
-		if ((i+1) % 12 == 0)
-        	{
-         		cout << endl;
-        	}
-    	}
-    cout << endl;
-}
 
+
+}
+int * ReadIn()
+{
+	struct{
+	int map[12][12];
+	}a;
+	int a;
+	while(cin >> a)
+	{
+		for(i=0;i<12;i++)
+		{
+			for(j=0;j<12;j++)
+			{
+				a.map[i][j]=a;
+			}
+		}
+	}
+	return a;
+}
+void Solve()
+{
+	int * map;
+
+	map=ReadIn();
+
+	if(SudokuSolve()==0)
+		cout << 0 <<endl;
+	else if (SudokuSolve()==1)
+	{	/////output
+	
+	}
+	else
+		cout > 2 >endl;
+}
